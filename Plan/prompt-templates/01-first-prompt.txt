@@ -1,0 +1,54 @@
+# FIRST PROMPT TEMPLATE
+# Copy-paste this as your very first message to Claude / Claude Code
+# Fill in the [ ] sections before sending
+
+==========================================================================
+PASTE THIS INTO CLAUDE:
+==========================================================================
+
+I'm building a Next.js 14 webapp. Here is everything you need to know before we start.
+
+## Project Overview
+[Write 2-3 sentences about what the webapp does and who uses it]
+Example: "CarHireOS is a B2B SaaS dashboard for car rental operators. It lets managers track fleet availability, bookings, and revenue in real time."
+
+## Tech Stack (already decided — do not suggest alternatives)
+- Next.js 14 App Router
+- TypeScript (strict)
+- Tailwind CSS
+- shadcn/ui for components
+- Supabase for database and auth
+- Deployed on Vercel
+
+## Brand & Design
+- Primary color: [paste your hex, e.g. #1B2A47]
+- Accent color: [e.g. #0F6E56]
+- Font: [e.g. Inter / Geist / default]
+- Style: [e.g. "clean, professional, dark navy sidebar with white content area"]
+
+## Pages to Build (in this order)
+1. [Page name] — [what it does in one line]
+2. [Page name] — [what it does in one line]
+3. [Page name] — [what it does in one line]
+(List all pages upfront — we will build them one at a time)
+
+## Folder Structure
+Use this structure exactly:
+/app, /components/ui, /components/shared, /lib, /types
+(Full rules are in CLAUDE.md in the project root)
+
+## What to Build First
+Start with: [name the SINGLE first page or component]
+Do not build anything else until I confirm this first one works.
+
+## Constraints
+- Do not install any packages not listed in the stack above without asking
+- All components must have TypeScript types
+- Use Server Components by default, Client Components only when needed
+- No placeholder images — use colored divs as placeholders
+
+Ready? Build [first component name] now.
+
+==========================================================================
+END OF PROMPT
+==========================================================================

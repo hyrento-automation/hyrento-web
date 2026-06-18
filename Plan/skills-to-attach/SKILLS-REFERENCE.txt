@@ -1,0 +1,83 @@
+# SKILLS REFERENCE CARD
+# These are files Claude reads at the START of a conversation
+# to follow the right rules for your task.
+# Attach them by uploading the SKILL.md file in the chat.
+
+==========================================================================
+SKILLS TO ATTACH FOR NEXT.JS WEBAPP BUILDING:
+==========================================================================
+
+## 1. frontend-design (ALWAYS ATTACH)
+File: /mnt/skills/public/frontend-design/SKILL.md
+When: Every session where you build UI
+Why: Tells Claude the design token system, typography rules, spacing,
+     color palette, and layout principles. Without it, Claude produces
+     generic-looking UI with default choices.
+Token saving: Saves ~300-500 tokens per UI component by not needing to
+              explain design preferences every time.
+
+---
+
+## 2. file-reading (ATTACH IF UPLOADING FILES)
+File: /mnt/skills/public/file-reading/SKILL.md
+When: Any session where you upload images, PDFs, spreadsheets, or docs
+Why: Tells Claude which tool to use for each file type so it reads
+     them correctly instead of guessing.
+Token saving: Prevents failed file reads and re-tries.
+
+---
+
+## 3. pdf (ATTACH IF GENERATING PDFs)
+File: /mnt/skills/public/pdf/SKILL.md
+When: Only if your webapp needs to export or generate PDF documents
+Why: Contains the exact Python libraries and code patterns for
+     creating PDFs with proper styling.
+Token saving: Prevents hallucinated library names and broken code.
+
+---
+
+## 4. docx (ATTACH IF GENERATING WORD DOCS)
+File: /mnt/skills/public/docx/SKILL.md
+When: Only if your webapp needs to export Word documents
+Why: Same as above but for .docx files.
+
+---
+
+## 5. xlsx (ATTACH IF GENERATING EXCEL FILES)
+File: /mnt/skills/public/xlsx/SKILL.md
+When: Only if your webapp needs to export spreadsheets
+Why: Contains the correct patterns for creating Excel files with
+     proper formatting, formulas, and styling.
+
+==========================================================================
+HOW TO ATTACH A SKILL:
+==========================================================================
+
+In Claude chat (claude.ai):
+1. Click the paperclip / attach icon
+2. Navigate to the skill file path above
+3. Upload it alongside your first message
+
+In Claude Code (terminal):
+1. The CLAUDE.md file handles most of this automatically
+2. For specific skills, paste the contents of SKILL.md into
+   your first message with the label "## Rules to follow:"
+
+==========================================================================
+SKILLS NOT NEEDED FOR NEXT.JS WORK:
+==========================================================================
+- pptx — only for PowerPoint presentations
+- product-self-knowledge — only for questions about Claude itself
+
+==========================================================================
+TOKEN-SAVING TIPS SUMMARY:
+==========================================================================
+
+1. Attach frontend-design skill at the START of every UI session
+2. Upload brand brief ONCE — never describe colors/fonts again
+3. Keep CLAUDE.md in project root — Claude Code reads it automatically
+4. Use the prompt templates in /prompt-templates/ folder
+5. One feature per message — never ask for two things at once
+6. When reporting bugs, paste the EXACT error message
+7. Tell Claude which file to edit — don't make it search
+8. After each component, say "confirmed working, continue to [next]"

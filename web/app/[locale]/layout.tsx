@@ -1,0 +1,196 @@
+import type { Metadata } from "next";
+import { DM_Sans, Inter } from "next/font/google";
+import "../globals.css";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { CookieBanner } from "@/components/shared/CookieBanner";
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+import { routing } from '@/i18n/routing';
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://carrental.digital"),
+  title: {
+    default: "CarRental.digital — The Complete Operating System for Car Rental Businesses",
+    template: "%s | CarRental.digital",
+  },
+  description:
+    "CarRental.digital gives you everything — your own website, booking engine, fleet control, CRM, invoicing, contracts, and real-time reports. Built for rental operators in the US and Europe.",
+  keywords: [
+    "car rental software",
+    "fleet management system",
+    "rental booking engine",
+    "car rental CRM",
+    "rental business software",
+    "fleet management",
+    "car rental management",
+  ],
+  authors: [{ name: "Maruti Digital India" }],
+  creator: "Maruti Digital India",
+  publisher: "Maruti Digital India",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://carrental.digital",
+    siteName: "CarRental.digital",
+    title: "CarRental.digital — The Complete Operating System for Car Rental Businesses",
+    description:
+      "Run your entire car rental business from one powerful system. Online booking, fleet management, CRM, contracts, and analytics — all included.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "CarRental.digital — Car Rental Management System",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CarRental.digital — The Complete Operating System for Car Rental Businesses",
+    description:
+      "Run your entire car rental business from one powerful system.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+export default async function RootLayout({
+  children,
+  params
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  if (!routing.locales.includes(locale as typeof routing.locales[number])) {
+    notFound();
+  }
+  const messages = await getMessages();
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "CarRental.digital",
+    url: "https://carrental.digital",
+    logo: "https://carrental.digital/logo.png",
+    description: "The Complete Operating System for Car Rental Businesses — serving the US and European markets.",
+    parentOrganization: {
+      "@type": "Organization",
+      name: "Maruti Digital India",
+      url: "https://marutidigital.in",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+1-800-555-0100",
+      contactType: "Customer Support",
+      availableLanguage: ["English", "German", "French", "Spanish", "Dutch"],
+      hoursAvailable: "Mo-Su 00:00-23:59",
+    },
+    sameAs: [
+      "https://www.linkedin.com/company/carrental-digital",
+      "https://twitter.com/carrentaldigital",
+    ],
+  };
+
+  const softwareSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "CarRental.digital",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    url: "https://carrental.digital",
+    description:
+      "Cloud-based car rental management system covering fleet management, online booking, CRM, digital contracts, payments, and analytics.",
+    offers: [
+      {
+        "@type": "Offer",
+        name: "Starter Plan",
+        price: "99",
+        priceCurrency: "USD",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          billingDuration: "P1M",
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "Professional Plan",
+        price: "220",
+        priceCurrency: "EUR",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          billingDuration: "P3M",
+        },
+      },
+    ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      ratingCount: "320",
+    },
+  };
+
+  return (
+    <html lang={locale} className={`${dmSans.variable} ${inter.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+        />
+      </head>
+      <body className="font-body bg-bg-base text-text-primary antialiased">
+        <NextIntlClientProvider messages={messages}>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <CookieBanner />
+        </NextIntlClientProvider>
+
+        {/* Crisp Chat Widget — replace CRISP_WEBSITE_ID with your ID */}
+        {process.env.NEXT_PUBLIC_CRISP_WEBSITE_ID && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.$crisp=[];
+                window.CRISP_WEBSITE_ID="${process.env.NEXT_PUBLIC_CRISP_WEBSITE_ID}";
+                (function(){var d=document;var s=d.createElement("script");
+                s.src="https://client.crisp.chat/l.js";
+                s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+              `,
+            }}
+          />
+        )}
+      </body>
+    </html>
+  );
+}
+

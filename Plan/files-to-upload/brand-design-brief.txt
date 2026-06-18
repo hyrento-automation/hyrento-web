@@ -1,0 +1,61 @@
+# BRAND & DESIGN BRIEF
+# Fill this in BEFORE starting. Paste into your first Claude message.
+# The more you fill in, the fewer tokens wasted on wrong design directions.
+
+==========================================================================
+BRAND BRIEF (fill and paste to Claude):
+==========================================================================
+
+## Product Name
+[Your product name]
+
+## One-line description
+[e.g. "Fleet management dashboard for car rental companies"]
+
+## Target user
+[e.g. "Rental company managers, 35-55 years old, not very technical, use it daily"]
+
+## Mood / Feel
+Choose one or more:
+[ ] Professional & corporate
+[ ] Modern & minimal  
+[ ] Friendly & approachable
+[ ] Bold & high-contrast
+[ ] Dark mode / premium
+[ ] Light & airy
+
+## Colors
+Primary (main brand color):     #[______]
+Secondary (accent/highlight):   #[______]
+Background (page bg):           #[______]   (usually white or very light gray)
+Sidebar/nav background:         #[______]   (if different from page)
+Danger/error:                   #EF4444     (or your preference)
+Success:                        #22C55E     (or your preference)
+
+## Typography
+Heading font:  [e.g. Inter, Geist, Poppins — or "use system default"]
+Body font:     [e.g. same as heading, or different]
+Font size base: 14px / 15px / 16px  (circle one)
+
+## Layout style
+[ ] Sidebar navigation (left sidebar, content on right)
+[ ] Top navigation bar
+[ ] Minimal — no persistent nav, content fills the screen
+[ ] Dashboard — sidebar + top bar + content area
+
+## Logo
+[ ] I will provide a logo file (upload it)
+[ ] Use text-only logo for now: "[Your product name]"
+[ ] Just use initials in a colored box: "[XX]"
+
+## Reference sites I like the look of
+1. [URL or name]
+2. [URL or name]
+(Optional — helps Claude match your taste without guessing)
+
+## What I definitely DON'T want
+[e.g. "No gradients, no rounded-everything bubbly style, no dark mode by default"]
+
+==========================================================================
+END OF BRIEF
+==========================================================================

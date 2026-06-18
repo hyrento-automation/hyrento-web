@@ -1,0 +1,38 @@
+# BUG FIX PROMPT TEMPLATE
+# When something breaks, use this exact format
+# Saves tokens by giving Claude everything it needs in one message
+
+==========================================================================
+PASTE THIS (fill in the blanks):
+==========================================================================
+
+## Bug Report
+
+### What I expected
+[One sentence: what should have happened]
+
+### What actually happened
+[One sentence: what happened instead]
+
+### Error message (exact, copy-paste from terminal or browser console)
+```
+[paste full error here]
+```
+
+### File where the error occurs
+[e.g. /components/shared/BookingTable.tsx line 42]
+
+### Relevant code (paste ONLY the broken section, not the whole file)
+```tsx
+[paste just the broken code block]
+```
+
+### What I already tried
+- [e.g. "Cleared .next cache and restarted"]
+- [e.g. "Changed X to Y but same error"]
+
+Fix only this bug. Do not refactor anything else.
+
+==========================================================================
+END OF PROMPT
+==========================================================================

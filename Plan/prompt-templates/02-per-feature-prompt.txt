@@ -1,0 +1,39 @@
+# PER-FEATURE PROMPT TEMPLATE
+# Use this for EVERY new page or component after the first one is confirmed working
+# One feature per message — never ask for two at once
+
+==========================================================================
+PASTE THIS (fill in the blanks):
+==========================================================================
+
+## Next: [Feature Name]
+
+### What it is
+[One sentence describing this page or component]
+
+### Route / File location
+- Page: /app/[folder]/page.tsx
+- Component: /components/[folder]/[Name].tsx
+
+### Data it needs
+- [Data field 1]: [type and where it comes from — e.g. "user.name: string from Supabase auth"]
+- [Data field 2]: [e.g. "bookings: Booking[] fetched from /api/bookings"]
+
+### UI it must have
+- [Element 1, e.g. "table showing all bookings with columns: Date, Car, Customer, Status"]
+- [Element 2, e.g. "filter dropdown for Status"]
+- [Element 3, e.g. "'New Booking' button in top right that opens a modal"]
+
+### States to handle
+- Loading: [what to show, e.g. "skeleton rows in the table"]
+- Empty: [e.g. "empty state with 'No bookings yet' message"]
+- Error: [e.g. "red banner with error message"]
+
+### Do NOT build yet
+- [Thing to skip, e.g. "the modal form — I will ask for that separately"]
+
+Build this now. Tell me the file path of every file you create or edit.
+
+==========================================================================
+END OF PROMPT
+==========================================================================

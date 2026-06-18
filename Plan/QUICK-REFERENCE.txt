@@ -1,0 +1,112 @@
+# NEXT.JS WEBAPP WITH CLAUDE — QUICK REFERENCE CHEAT SHEET
+# Print this or keep it open while working
+
+==========================================================================
+BEFORE YOU START (checklist)
+==========================================================================
+
+[ ] Filled in: brand-design-brief.txt
+[ ] Filled in: page-feature-plan.txt  
+[ ] Created:   CLAUDE.md in project root (copy from /claude-code/CLAUDE.md)
+[ ] Ready to attach: frontend-design SKILL.md
+[ ] Ready to attach: file-reading SKILL.md (if uploading files)
+
+==========================================================================
+SESSION STARTUP (do this every new chat)
+==========================================================================
+
+1. Attach frontend-design/SKILL.md  ← most important
+2. Upload brand-design-brief.txt    ← if first session
+3. Paste your first-prompt.txt      ← filled in with your project details
+
+==========================================================================
+PROMPT RULES (follow these to save tokens)
+==========================================================================
+
+✅ DO:
+- One page or component per message
+- Paste exact error messages when debugging
+- Say which file to edit (don't make Claude guess)
+- Confirm "working, move to next" before continuing
+- Use the templates in /prompt-templates/
+
+❌ DON'T:
+- "Build the whole app" in one message
+- Describe your brand colors more than once (use the brief)
+- Ask Claude to "improve" or "refactor" without specifying what
+- Start a new topic without confirming the previous one works
+
+==========================================================================
+CLAUDE CODE COMMANDS (terminal)
+==========================================================================
+
+Start a new project:
+  npx create-next-app@latest my-app --typescript --tailwind --app
+
+Install shadcn/ui:
+  npx shadcn-ui@latest init
+
+Add a shadcn component:
+  npx shadcn-ui@latest add button
+  npx shadcn-ui@latest add card
+  npx shadcn-ui@latest add table
+  npx shadcn-ui@latest add dialog
+  npx shadcn-ui@latest add form
+
+Install Supabase:
+  npm install @supabase/supabase-js @supabase/ssr
+
+Run dev server:
+  npm run dev
+
+Build and check for errors:
+  npm run build
+
+==========================================================================
+FILES IN THIS PACKAGE
+==========================================================================
+
+/claude-code/
+  CLAUDE.md                    ← Put this in your project root. Required.
+
+/prompt-templates/
+  01-first-prompt.txt          ← Your opening message to Claude
+  02-per-feature-prompt.txt    ← Use for every new page/component
+  03-bug-fix-prompt.txt        ← Use when something breaks
+
+/files-to-upload/
+  brand-design-brief.txt       ← Fill this, upload to Claude once
+  page-feature-plan.txt        ← Fill this, keep as your app map
+
+/skills-to-attach/
+  SKILLS-REFERENCE.txt         ← Guide to which skills to attach when
+
+==========================================================================
+SKILL FILES TO ATTACH (not included here — already on Claude's system)
+==========================================================================
+
+Path on Claude's system:
+  /mnt/skills/public/frontend-design/SKILL.md    ← ALWAYS attach
+  /mnt/skills/public/file-reading/SKILL.md       ← attach if uploading files
+  /mnt/skills/public/pdf/SKILL.md                ← attach if generating PDFs
+  /mnt/skills/public/xlsx/SKILL.md               ← attach if generating Excel
+
+==========================================================================
+WHEN THINGS GO WRONG
+==========================================================================
+
+Component looks wrong visually:
+→ Attach frontend-design SKILL.md and say "redesign this component 
+  following the skill rules. Here is what's wrong: [describe]"
+
+File read error:
+→ Attach file-reading SKILL.md and say "retry reading this file"
+
+TypeScript errors on build:
+→ Use bug-fix-prompt.txt, paste the exact tsc error output
+
+Supabase not connecting:
+→ Check .env.local has both NEXT_PUBLIC_SUPABASE_URL and 
+  NEXT_PUBLIC_SUPABASE_ANON_KEY set correctly
+
+==========================================================================

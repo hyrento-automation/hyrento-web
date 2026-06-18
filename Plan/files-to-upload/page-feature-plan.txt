@@ -1,0 +1,90 @@
+# PAGE & FEATURE PLANNING SHEET
+# Fill this BEFORE starting Claude Code
+# Having this ready = zero wasted turns re-explaining what the app does
+
+==========================================================================
+APP PLAN (fill and keep as reference):
+==========================================================================
+
+## App Name
+[Name]
+
+## What problem does it solve?
+[2 sentences max]
+
+## Who uses it?
+[e.g. "Rental managers (admins) and customers (end users)" — list each role]
+
+---
+
+## PAGES LIST
+(Number them in build order — simpler pages first)
+
+### Public pages (no login needed)
+| # | Page name | Route | What it does |
+|---|-----------|-------|--------------|
+| 1 | Landing   | /     |              |
+| 2 | Login     | /login|              |
+| 3 | Signup    | /signup|             |
+
+### Protected pages (login required)
+| # | Page name      | Route              | What it does |
+|---|----------------|--------------------|--------------|
+| 4 | Dashboard      | /dashboard         |              |
+| 5 | [Page name]    | /[route]           |              |
+| 6 | [Page name]    | /[route]           |              |
+| 7 | [Page name]    | /[route]           |              |
+| 8 | Settings       | /settings          |              |
+
+---
+
+## COMPONENTS LIST
+(Reusable pieces used across multiple pages)
+
+| Component name | Used on pages | What it does |
+|----------------|---------------|--------------|
+| Navbar         |   all         |              |
+| Sidebar        |   dashboard+  |              |
+| [Name]         |               |              |
+| [Name]         |               |              |
+
+---
+
+## DATA / DATABASE
+(What data does the app store?)
+
+| Table name   | Key fields                          | Notes |
+|--------------|-------------------------------------|-------|
+| users        | id, email, name, role               |       |
+| [table name] | id, [fields]                        |       |
+| [table name] | id, [fields]                        |       |
+
+---
+
+## API ROUTES NEEDED
+| Method | Route                    | What it does      |
+|--------|--------------------------|-------------------|
+| GET    | /api/[resource]          |                   |
+| POST   | /api/[resource]          |                   |
+| PUT    | /api/[resource]/[id]     |                   |
+| DELETE | /api/[resource]/[id]     |                   |
+
+---
+
+## BUILD ORDER (copy this into Claude's first message)
+1. Set up project structure + Supabase connection
+2. Auth pages (login, signup)
+3. [Page 3]
+4. [Page 4]
+...
+
+---
+
+## NOTES / SPECIAL REQUIREMENTS
+- [e.g. "Users must verify email before accessing dashboard"]
+- [e.g. "Mobile responsive is required for all pages"]
+- [e.g. "Admin users can see all data, regular users see only their own"]
+
+==========================================================================
+END OF PLAN
+==========================================================================
