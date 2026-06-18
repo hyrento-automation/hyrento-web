@@ -1,0 +1,19 @@
+{
+  "name": "carrental-digital",
+  "private": true,
+  "workspaces": [
+    "web"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace web",
+    "dev": "npm run dev --workspace web",
+    "lint": "npm run lint --workspace web",
+    "start": "npm run start --workspace web"
+  },
+  "dependencies": {
+    "next": "16.2.9"
+  },
+  "devDependencies": {
+    "eslint-config-next": "16.2.9"
+  }
+}
