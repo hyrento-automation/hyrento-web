@@ -17,6 +17,7 @@
     "eslint-config-next": "16.2.9"
   },
   "optionalDependencies": {
-    "@parcel/watcher-linux-x64-glibc": "^2.5.6"
+    "@parcel/watcher-linux-x64-glibc": "^2.5.6",
+    "lightningcss-linux-x64-gnu": "^1.32.0"
   }
 }
