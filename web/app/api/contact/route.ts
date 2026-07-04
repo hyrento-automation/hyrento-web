@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { createHubSpotContact } from "@/lib/hubspot";
-import { sendWelcomeEmail } from "@/lib/resend";
-import { sendContactNotificationEmail } from "@/lib/smtp";
+import { sendWelcomeEmail, sendContactNotificationEmail } from "@/lib/smtp";
 
 export async function POST(req: Request) {
   try {

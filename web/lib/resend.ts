@@ -16,8 +16,26 @@ export const sendEmail = async (payload: EmailPayload): Promise<boolean> => {
 
   try {
     console.log("[Resend Email Send Real]", payload);
-    // Real API implementation details
-    // const response = await fetch("https://api.resend.com/emails", { ... });
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        from: process.env.RESEND_FROM_EMAIL || "HyRento <hello@hyrento.com>",
+        to: payload.to,
+        subject: payload.subject,
+        html: payload.html,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Resend API response error:", response.status, errorText);
+      return false;
+    }
+
     return true;
   } catch (error) {
     console.error("Resend email delivery failed:", error);

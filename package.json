@@ -1,5 +1,5 @@
 {
-  "name": "carrental-digital",
+  "name": "hyrento-web",
   "private": true,
   "workspaces": [
     "web"

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { sendBrochureEmail } from "@/lib/smtp";
 
 const escapeHtml = (str: string) =>
   str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -43,26 +44,8 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // 2. Send confirmation email via Resend — scaffolded, wire up RESEND_API_KEY
-    if (process.env.RESEND_API_KEY) {
-      const resendRes = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-        },
-        body: JSON.stringify({
-          from: "HyRento <hello@hyrento.com>",
-          to: email,
-          subject: `Your download: ${sanitizedTitle}`,
-          html: `<p>Thanks for downloading <strong>${sanitizedTitle}</strong> from HyRento.</p>
-                 <p>If you have any questions, reply to this email or visit <a href="https://hyrento.com/contact">our contact page</a>.</p>`,
-        }),
-      });
-      if (!resendRes.ok) {
-        console.error("[download-gate] Resend error:", resendRes.status);
-      }
-    }
+    // 2. Send confirmation email via SMTP
+    await sendBrochureEmail(email, brochureTitle);
 
     return NextResponse.json({
       success: true,
