@@ -32,7 +32,7 @@ export function FooterCTABand() {
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
           <Link
-            href="/demo"
+            href="/onboarding"
             className="inline-flex items-center justify-center gap-1.5 px-8 py-4 bg-brand-green hover:bg-brand-green-hover text-white font-heading font-700 text-btn rounded-full shadow-btn-green transition-all duration-200 hover:scale-[1.02]"
           >
             <span>Start Your Free Trial</span>

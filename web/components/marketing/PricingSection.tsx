@@ -147,7 +147,7 @@ export function PricingSection() {
           fleetSize="Up to 50 vehicles"
           features={starterFeatures}
           ctaText="Start With Starter →"
-          ctaHref="/demo?plan=starter"
+          ctaHref="/onboarding?plan=starter"
         />
 
         <PricingCard
@@ -159,7 +159,7 @@ export function PricingSection() {
           fleetSize="Up to 200 vehicles"
           features={proFeatures}
           ctaText="Start With Professional →"
-          ctaHref="/demo?plan=professional"
+          ctaHref="/onboarding?plan=professional"
           highlighted={true}
         />
 

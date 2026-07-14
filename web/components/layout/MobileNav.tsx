@@ -155,7 +155,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
             {/* Bottom CTAs */}
             <div className="p-5 border-t border-bg-border space-y-3">
               <Link
-                href="/demo"
+                href="/onboarding"
                 onClick={onClose}
                 className="block w-full text-center py-3.5 bg-brand-green hover:bg-brand-green-hover text-white font-heading font-600 rounded-full shadow-btn-green transition-all"
                 id="mobile-nav-trial-cta"

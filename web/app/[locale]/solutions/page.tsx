@@ -114,7 +114,7 @@ export default function SolutionsPage() {
                 </div>
 
                 <Link
-                  href="/demo"
+                  href="/onboarding"
                   className="w-full text-center py-2.5 px-4 bg-slate-900 hover:bg-slate-800 text-white rounded-full font-heading font-750 text-body-sm transition-colors mt-auto"
                 >
                   Request Solution Setup →

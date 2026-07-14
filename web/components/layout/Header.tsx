@@ -180,7 +180,7 @@ export function Header() {
               </div>
 
               <Link
-                href="/demo"
+                href="/onboarding"
                 className="inline-flex items-center px-4 py-2 text-btn font-heading font-600 text-white bg-brand-green hover:bg-brand-green-hover rounded-full shadow-btn-green transition-all duration-200"
                 id="header-cta"
               >

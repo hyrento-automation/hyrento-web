@@ -43,7 +43,7 @@ export function StickyMobileCTA() {
           </Link>
           
           <Link
-            href="/demo"
+            href="/onboarding"
             className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-brand-green hover:bg-brand-green-hover text-white rounded-full text-[13px] font-heading font-600 shadow-btn-green transition-colors"
           >
             <Calendar className="w-4 h-4" />

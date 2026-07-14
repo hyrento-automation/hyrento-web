@@ -71,7 +71,7 @@ export function HowItWorks() {
       {/* CTA Band at bottom */}
       <div className="text-center">
         <Link
-          href="/demo"
+          href="/onboarding"
           className="inline-flex items-center gap-2 px-8 py-4 bg-brand-green hover:bg-brand-green-hover text-white font-heading font-700 text-btn rounded-full shadow-btn-green transition-all duration-200 hover:scale-[1.02]"
         >
           {t("cta_button")}
