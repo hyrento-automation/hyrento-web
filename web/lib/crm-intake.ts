@@ -23,7 +23,7 @@ export async function syncTrialSubmission({ answers, sourceUrl, userAgent }: Tri
     .digest("hex");
 
   try {
-    const response = await fetch(`${url}/rest/v1/rpc/upsert_trial_submission`, {
+    const response = await fetch(`${url}/rest/v1/rpc/ops_upsert_trial_submission`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
