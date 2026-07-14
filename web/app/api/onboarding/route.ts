@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { sendEmail } from "@/lib/resend";
+import { renderOnboardingWelcomeEmail } from "@/emails/onboarding-welcome";
+import { syncTrialSubmission } from "@/lib/crm-intake";
 
 type AnswerValue = string | string[];
 type Answers = Record<string, AnswerValue>;
@@ -147,9 +149,6 @@ export async function POST(request: Request) {
       })
       .join("");
 
-    const businessName = escapeHtml(valueToText(answers.legalBusinessName));
-    const contactName = escapeHtml(valueToText(answers.contactName));
-
     const adminHtml =
       '<div style="font-family:Arial,sans-serif;max-width:760px;margin:0 auto;color:#0f172a">' +
       '<div style="background:#0a1628;color:white;padding:24px;border-radius:14px 14px 0 0">' +
@@ -161,32 +160,30 @@ export async function POST(request: Request) {
       rows +
       "</table></div></div>";
 
-    const confirmationHtml =
-      '<div style="font-family:Arial,sans-serif;max-width:620px;margin:0 auto;color:#0f172a">' +
-      '<h1 style="font-size:26px;margin-bottom:12px">Thanks, ' +
-      contactName +
-      ".</h1>" +
-      "<p>We received the onboarding details for <strong>" +
-      businessName +
-      "</strong>.</p>" +
-      "<p>Your HyRento setup specialist will review your answers and contact you to arrange the next steps, including any optional logo, fleet photo, or contract uploads.</p>" +
-      '<div style="margin-top:24px;padding:18px;background:#f0fdf4;border:1px solid #dcfce7;border-radius:12px">' +
-      "<strong>What happens next?</strong><br/>We will confirm your setup call, prepare your workspace, and help you begin your 14-day full-access trial.</div>" +
-      '<p style="margin-top:24px;color:#475569">The HyRento Team<br/>hello@hyrento.com</p>' +
-      "</div>";
+    const confirmationHtml = renderOnboardingWelcomeEmail({
+      contactName: valueToText(answers.contactName),
+      businessName: valueToText(answers.legalBusinessName),
+    });
 
-    const [adminSent, confirmationSent] = await Promise.all([
+    const [adminSent, confirmationSent, crmSynced] = await Promise.all([
       sendEmail({
-        to: process.env.ONBOARDING_TO_EMAIL || "hello@hyrento.com",
+        to: process.env.ONBOARDING_TO_EMAIL || "info@hyrento.com",
+        replyTo: contactEmail,
         subject:
-          "New HyRento onboarding: " +
+          "New 14-day trial onboarding: " +
           valueToText(answers.legalBusinessName),
         html: adminHtml,
       }),
       sendEmail({
         to: contactEmail,
-        subject: "We received your HyRento onboarding details",
+        replyTo: "info@hyrento.com",
+        subject: "Welcome to HyRento — your setup starts now",
         html: confirmationHtml,
+      }),
+      syncTrialSubmission({
+        answers,
+        sourceUrl: request.headers.get("origin"),
+        userAgent: request.headers.get("user-agent"),
       }),
     ]);
 
@@ -200,6 +197,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: true,
       confirmationSent,
+      crmSynced,
     });
   } catch (error) {
     console.error("Onboarding submission error:", error);
