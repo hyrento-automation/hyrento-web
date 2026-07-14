@@ -168,7 +168,6 @@ export async function POST(request: Request) {
     const [adminSent, confirmationSent, crmSynced] = await Promise.all([
       sendEmail({
         to: process.env.ONBOARDING_TO_EMAIL || "info@hyrento.com",
-        replyTo: contactEmail,
         subject:
           "New 14-day trial onboarding: " +
           valueToText(answers.legalBusinessName),
@@ -176,7 +175,6 @@ export async function POST(request: Request) {
       }),
       sendEmail({
         to: contactEmail,
-        replyTo: "info@hyrento.com",
         subject: "Welcome to HyRento — your setup starts now",
         html: confirmationHtml,
       }),
