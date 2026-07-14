@@ -81,7 +81,7 @@ export function HeroSection() {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2"
             >
               <Link
-                href="/demo"
+                href="/onboarding"
                 className="inline-flex items-center justify-center px-8 py-4 bg-brand-green hover:bg-brand-green-hover text-white font-heading font-700 text-btn rounded-full shadow-btn-green transition-all duration-200 hover:scale-[1.02]"
               >
                 {t("btn_trial")}
